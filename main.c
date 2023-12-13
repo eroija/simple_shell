@@ -3,12 +3,12 @@
 
 static volatile int keepRunning = 1;
 /**
- * handle_signal - prints new line then prompt CTRL + C is passed as input
- * @signal: signal
+ * handle_signal - prints new line and prompt when CTRL + C is passed as input
+ * @signal: name of signal
  */
 void handle_signal(int signal)
 {
-	char *prompt = {"\n(ash)$ "}; /*print prompt in newline*/
+	char *prompt = {"\n(ash)$ "}; /*print prompt on newline*/
 	(void) signal;
 
 	write(STDOUT_FILENO, prompt, _strlen(prompt));
@@ -16,10 +16,10 @@ void handle_signal(int signal)
 	fflush(stdout);
 }
 /**
- * main - create prompt reading input, sparses, executes and waits
- * for another command unless when to exit
- * @ac:no of arguments
- * @av: array of  arguments
+ * main - creates a prompt reading input, sparses it, executes and waits
+ * for another command unless told to exit
+ * @ac: number of arguments
+ * @av: array of arguments
  * @env: environment variable
  * Return: 0 (success)
  */
